@@ -26,9 +26,9 @@ const app = express();
 const allowedOrigins = [
   process.env.CLIENT_URL,
   'http://localhost:5173',
-  'https://task-management-one-blush.vercel.app',
-  'https://task-management-master-dv49.vercel.app',
-  'https://task-management-master-vert.vercel.app'
+  'https://task-flow-mocha-five.vercel.app',
+  'https://task-flow-git-main-md-tabrezs-projects.vercel.app',
+  'https://task-flow-cyrwbbixh-md-tabrezs-projects.vercel.app'
 ].filter(Boolean);
 
 app.use(
