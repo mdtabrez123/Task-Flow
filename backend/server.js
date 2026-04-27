@@ -23,20 +23,20 @@ if (!JWT_SECRET) {
 
 const app = express();
 
-// --- MODIFICATION: Configure CORS ---
-// Instead of app.use(cors()), we provide specific options
-// to allow your frontend's origins (both local and deployed).
-const corsOptions = {
-  origin: [
-    'http://localhost:5173', 
-    'https://task-management-one-blush.vercel.app', 
-    'https://task-management-master-dv49.vercel.app',
-    'https://task-management-master-vert.vercel.app'
-  ],
-  optionsSuccessStatus: 200 // for older browsers
-};
-app.use(cors(corsOptions));
-// --- END MODIFICATION ---
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  'http://localhost:5173',
+  'https://task-management-one-blush.vercel.app',
+  'https://task-management-master-dv49.vercel.app',
+  'https://task-management-master-vert.vercel.app'
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    optionsSuccessStatus: 200
+  })
+);
 
 // Connect to DB immediately for Vercel
 if (process.env.MONGO_URI) {
@@ -85,6 +85,7 @@ const startServer = async () => {
     const server = app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
       console.log('Environment variables loaded successfully.');
+      console.log('CORS allowed origins:', allowedOrigins);
     });
 
   } catch (error) {
@@ -95,5 +96,4 @@ const startServer = async () => {
 // Start the server
 // IMPORTANT for Vercel: We also export the 'app' 
 startServer();
-
 export default app;
