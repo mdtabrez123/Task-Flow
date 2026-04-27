@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // --- ADD THIS CONSTANT ---
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://task-flow-hq6t.vercel.app';
 
 const AuthContext = createContext(null);
 

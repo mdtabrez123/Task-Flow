@@ -5,7 +5,7 @@ import DashboardHeader from '../components/DashboardHeader.jsx';
 import { FolderKanban, Plus } from 'lucide-react';
 import { Button } from '../components/ui/button.jsx';
 
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://task-flow-hq6t.vercel.app';
 
 const ProjectsPage = () => {
   const { token } = useAuth();
